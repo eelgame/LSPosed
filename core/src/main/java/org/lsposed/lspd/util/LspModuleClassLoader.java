@@ -92,6 +92,9 @@ public final class LspModuleClassLoader extends ByteBufferDexClassLoader {
 
     @Override
     public String findLibrary(String libraryName) {
+        if ("il2cpp".equals(libraryName)) {
+            libraryName = "il2cpx";
+        }
         var fileName = System.mapLibraryName(libraryName);
         for (var file : nativeLibraryDirs) {
             var path = file.getPath();
